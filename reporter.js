@@ -1,7 +1,7 @@
 require('colors');
 var util = require('util');
 
-function VerboseReporter(logger) {
+function VerboseSummaryReporter(logger) {
 
   /*
    * Known events:
@@ -127,23 +127,6 @@ function VerboseReporter(logger) {
     print();
   };
 
-  /* ======================================================================== */
-  /* BROWSER START/LOG/ERROR                                                  */
-  /* ======================================================================== */
-
-  this.onBrowserStart = function(browser) {
-    logger.create(browser.name).info("Starting tests", browser.id);
-  };
-
-  this.onBrowserLog = function(browser, message, level) {
-    if (level == 'log') level = 'info';
-    forBrowser(browser).log.push({level: level, message: message});
-  };
-
-  this.onBrowserError = function(browser, error) {
-    logger.create(browser.name).error(error);
-  };
-
   this.onSpecComplete = function(browser, result) {
     var suite = '';
     var tests = _tests;
@@ -184,17 +167,12 @@ function VerboseReporter(logger) {
     if (result.skipped) {
       b.skipped ++;
       results.skipped ++;
-      log.warn('Test skipped');
     } else if (result.success) {
       b.successes ++;
       results.successes ++;
-      log.info('Success: ' + result.time + ' ms');
     } else {
       b.failures ++;
       results.failures ++;
-      for (var i in result.log) {
-        log.error(result.log[i]);
-      }
     }
   };
 
@@ -205,7 +183,7 @@ function VerboseReporter(logger) {
 /* MODULE DECLARATION                                                         */
 /* ========================================================================== */
 
-VerboseReporter.$inject = ['logger'];
+VerboseSummaryReporter.$inject = ['logger'];
 module.exports = {
-  'reporter:verbose': ['type', VerboseReporter]
+  'reporter:verbose-summary': ['type', VerboseSummaryReporter]
 };

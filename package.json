@@ -1,11 +1,11 @@
 {
-  "name": "karma-verbose-reporter",
-  "version": "0.0.2",
-  "description": "A Karma reporter bringing verbosity to the max.",
+  "name": "karma-verbose-summary-reporter",
+  "version": "0.0.1",
+  "description": "A Karma reporter bringing summary verbosity to the max.",
   "main": "reporter.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/usrz/javascript-karma-verbose-reporter.git"
+    "url": "git://github.com/pstanic/karma-verbose-summary-reporter.git"
   },
   "keywords": [
     "karma-plugin",
@@ -15,6 +15,9 @@
     "name": "Pier Fumagalli",
     "email": "pier@usrz.com"
   },
+  "contributors": [{
+    "name": "Predrag Stanic"
+  }],
   "dependencies": {
     "colors": ">=1.0"
   },
