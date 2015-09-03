@@ -11,6 +11,14 @@ This reporter is based on [karma-verbose-reporter](https://github.com/usrz/javas
 
 Reports only detailed summary after the execution; can be combined with other reporters that report during test execution.
 
+To setup, add `verbose-summary` to the reporters propety in karma.conf.js.
+
+```
+reporters: ['verbose-summary',]
+```
+
+Example output.
+
 ```
 Suites and tests results:
 
